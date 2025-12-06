@@ -11,6 +11,22 @@ char sortear_letra(){
 	return c;
 }
 
+int* sortear_ordem(int n){
+	int i = 0, j, valido, *ordem = (int*)malloc(sizeof(int) * n);
+	
+	do {
+		valido = 1;
+		ordem[i] = rand() % n;
+		for (j = 0; j < i; j++)
+			if (ordem[j] == ordem[i])
+				valido = 0;
+		if (valido)
+			i++;
+	} while (i < n);
+	
+	return ordem;
+}
+
 void iniciar_semente(){
 	srand((int)time(NULL)); // Muda a semente de geracao de numeros para que a sequencia seja diferente toda vez que o programa for rodado.
 }
