@@ -1,13 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "jogadores.h"
+#include "categorias.h"
 #include "sorteios.h"
 #include "util.h"
 
 int main (int narg, char *argv[]) {
 	int n, *ordem, i, k;
 	Jogador *j;
-	char letra, buffer[100];
+	char letra, categoria[15], buffer[100];
 	
 	printf("*** JOGO AMEDONHA ***\n");
 	
@@ -24,8 +26,9 @@ int main (int narg, char *argv[]) {
 	
 	for (i = 0; i < 4; i++) {
 		letra = sortear_letra();
+		strcpy(categoria, obterNomeCategoria(sortearCategoria()));
 		printf("\nA letra desta rodada eh: %c\n", letra);
-		printf("A categoria desta rodada eh: \n");
+		printf("A categoria desta rodada eh: %s\n", categoria);
 		printf("A ordem desta jogada sera: \n");
 		ordem = sortear_ordem(n);
 		
@@ -39,7 +42,7 @@ int main (int narg, char *argv[]) {
 		
 		// Recebe as respostas de cada jogador
 		for (k = 0; k < n; k++) {
-			printf("%s, voce deve entra um ""Nome da categoria"" com letra ""%c"" em n segundos: ", j[ordem[k]].nome, letra);
+			printf("%s, voce deve entra um \"%s\" com letra \"%c\" em n segundos: ", j[ordem[k]].nome, categoria, letra);
 			fgets(buffer, 100, stdin);
 			limpa_tela();
 		}
