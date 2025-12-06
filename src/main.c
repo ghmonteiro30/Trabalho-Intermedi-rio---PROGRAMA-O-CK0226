@@ -25,19 +25,22 @@ int main (int narg, char *argv[]) {
 	lerNomes(j, n);
 	
 	for (i = 0; i < 4; i++) {
+		// Sorteio da letra da rodada
 		letra = sortear_letra();
-		strcpy(categoria, obterNomeCategoria(sortearCategoria()));
 		printf("\nA letra desta rodada eh: %c\n", letra);
+		
+		// Sorteio da categoria da rodada
+		strcpy(categoria, obterNomeCategoria(sortearCategoria()));
 		printf("A categoria desta rodada eh: %s\n", categoria);
+		
+		// Sorteio da ordem de jogada da rodada
 		printf("A ordem desta jogada sera: \n");
 		ordem = sortear_ordem(n);
-		
 		for (k = 0; k < n; k++) {
 			printf("  %d. %s\n", k + 1, j[ordem[k]].nome);
 		}
 		
-		printf("\nTecle [Enter] para iniciar a rodada: ");
-		fgets(buffer, 100, stdin);
+		esperar_entrada("Tecle [Enter] para iniciar a rodada: ");
 		limpa_tela();
 		
 		// Recebe as respostas de cada jogador
@@ -52,13 +55,16 @@ int main (int narg, char *argv[]) {
 		for (k = 0; k < n; k++)
 			printf("%s:    %s\n", j[ordem[k]].nome, "resposta"); 
 		
-		// Exibe a tabela de escores da rodada
-		printf("\nConcluida a rodada, esta eh a tabela de escores:\n");
+		// Se ainda nao for a ultima rodada, exibe a tabela de escores parcial
+		if (i != 3){
+			printf("\nConcluida a rodada, esta eh a tabela de escores:\n");
+			
+			printf("--- aqui tabela de escores ---\n");
+			
+			esperar_entrada("Tecle [Enter] para iniciar a proxima rodada: ");
+		} else
+			esperar_entrada("Tecle [Enter] para exibir o resultado final: ");
 		
-		printf("--- aqui tabela de escores ---\n");
-		
-		printf("\nTecle [Enter] para iniciar a proxima rodada: ");
-		fgets(buffer, 100, stdin);
 		limpa_tela();
 	}
 	
