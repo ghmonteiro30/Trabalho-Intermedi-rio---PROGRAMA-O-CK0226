@@ -5,7 +5,7 @@ char sortear_letra(){
 	char c;
 	
 	do {
-		c = (rand() % 25) + 65;  //Gera um inteira de 65 a 90
+		c = (rand() % 26) + 65;  //Gera um inteira de 65 a 90
 	} while (c == 75 || c == 87 || c == 89); //Gera novamente se o inteiro gerado for 75, 87 ou 89, ou seja K, W e Y
 	
 	return c;
