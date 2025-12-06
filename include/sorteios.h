@@ -1,1 +1,2 @@
-char sorteia_letra();
+void iniciar_semente();
+char sortear_letra();
