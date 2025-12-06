@@ -6,10 +6,10 @@
 
 // Nomes exibidos ao usuário
 static const char* NOMES_CATEGORIAS[NUM_CATEGORIAS] = {
-    "Nome de Pessoa",
-    "Nome de Cidade",
-    "Nome de Animal",
-    "Nome de Comida",
+    "Pessoa",
+    "Cidade",
+    "Animal",
+    "Comida",
     "Profissão"
 };
 

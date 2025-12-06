@@ -31,7 +31,7 @@ int main (int narg, char *argv[]) {
 		
 		// Sorteio da categoria da rodada
 		strcpy(categoria, obterNomeCategoria(sortearCategoria()));
-		printf("A categoria desta rodada eh: %s\n", categoria);
+		printf("A categoria desta rodada eh: Nome de %s\n", categoria);
 		
 		// Sorteio da ordem de jogada da rodada
 		printf("A ordem desta jogada sera: \n");
@@ -45,7 +45,7 @@ int main (int narg, char *argv[]) {
 		
 		// Recebe as respostas de cada jogador
 		for (k = 0; k < n; k++) {
-			printf("%s, voce deve entra um \"%s\" com letra \"%c\" em n segundos: ", j[ordem[k]].nome, categoria, letra);
+			printf("%s, voce deve entra um \"Nome de %s\" com letra \"%c\" em n segundos: ", j[ordem[k]].nome, categoria, letra);
 			fgets(buffer, 100, stdin);
 			limpa_tela();
 		}
