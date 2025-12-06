@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <time.h>
 
 char sortear_letra(){
@@ -9,7 +10,6 @@ char sortear_letra(){
 	
 	return c;
 }
-
 
 void iniciar_semente(){
 	srand((int)time(NULL)); // Muda a semente de geracao de numeros para que a sequencia seja diferente toda vez que o programa for rodado.
