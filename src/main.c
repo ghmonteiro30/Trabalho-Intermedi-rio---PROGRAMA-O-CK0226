@@ -5,7 +5,7 @@
 #include "util.h"
 
 int main (int narg, char *argv[]) {
-	int n, i;
+	int n, *ordem, i, k;
 	Jogador *j;
 	char letra;
 	
@@ -27,6 +27,10 @@ int main (int narg, char *argv[]) {
 		printf("\nA letra desta rodada eh: %c\n", letra);
 		printf("A categoria desta rodada eh: \n");
 		printf("A ordem desta jogada sera: \n");
+		ordem = sortear_ordem(n);
+		for (k = 0; k < n; k++) {
+			printf("  %d. %s\n", k + 1, j[ordem[k]]);
+		}
 	}
 	
 	
