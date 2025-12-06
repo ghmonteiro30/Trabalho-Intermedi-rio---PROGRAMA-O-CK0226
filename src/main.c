@@ -23,7 +23,8 @@ int main (int narg, char *argv[]) {
 	lerNomes(j, n);
 	
 	for (i = 0; i < 4; i++) {
-		printf("\nA letra desta rodada eh: %c\n", sortear_letra());
+		letra = sortear_letra();
+		printf("\nA letra desta rodada eh: %c\n", letra);
 		printf("A categoria desta rodada eh: \n");
 		printf("A ordem desta jogada sera: \n");
 	}
