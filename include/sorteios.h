@@ -8,6 +8,6 @@ void iniciar_semente();
 char sortear_letra();
 
 // Sorteia a ordem de jogada dos n jogadores
-int *sortear_ordem(int n);
+void sortear_ordem(int *ordem, int n);
 
 #endif

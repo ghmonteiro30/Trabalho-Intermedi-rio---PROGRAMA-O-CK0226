@@ -12,8 +12,8 @@ char sortear_letra(){
 	return c;
 }
 
-int* sortear_ordem(int n){
-	int i = 0, j, valido, *ordem = (int*)malloc(sizeof(int) * n);
+void sortear_ordem(int *ordem, int n){
+	int i = 0, j, valido;
 	
 	do {
 		valido = 1;
@@ -24,8 +24,6 @@ int* sortear_ordem(int n){
 		if (valido)
 			i++;
 	} while (i < n);
-	
-	return ordem;
 }
 
 void iniciar_semente(){

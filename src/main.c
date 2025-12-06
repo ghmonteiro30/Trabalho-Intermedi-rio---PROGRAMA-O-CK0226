@@ -7,7 +7,7 @@
 #include "util.h"
 
 int main (int narg, char *argv[]) {
-	int n, *ordem, i, k;
+	int n, *ordem = NULL, i, k;
 	Jogador *j;
 	char letra, categoria[15], buffer[100];
 	
@@ -35,7 +35,9 @@ int main (int narg, char *argv[]) {
 		
 		// Sorteio da ordem de jogada da rodada
 		printf("A ordem desta jogada sera: \n");
-		ordem = sortear_ordem(n);
+		if (ordem == NULL)
+			ordem = (int*)malloc(sizeof(int) * n);
+		sortear_ordem(ordem, n);
 		for (k = 0; k < n; k++) {
 			printf("  %d. %s\n", k + 1, j[ordem[k]].nome);
 		}
