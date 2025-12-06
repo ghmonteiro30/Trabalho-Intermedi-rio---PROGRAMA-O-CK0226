@@ -7,5 +7,9 @@ void limpa_stdin(){
 }
 
 void limpa_tela(){
-	system("clear");
+	#if defined(_WIN32) || defined(_WIN64)
+		system("cls");
+	#elif defined(__linux__) || defined(__APPLE__) || defined(__unix__) || defined(__MACH__)
+		system("clear");
+	#endif
 }
