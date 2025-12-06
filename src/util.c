@@ -2,8 +2,10 @@
 #include <stdlib.h>
 
 void limpa_stdin(){
-	char c[2];
-	fgets(c, 2, stdin);
+	int c;
+	do {
+		c = getchar();
+	} while (c != '\n');
 }
 #include "util.h"
 
@@ -13,4 +15,12 @@ void limpa_tela(){
 	#elif defined(__linux__) || defined(__APPLE__) || defined(__unix__) || defined(__MACH__)
 		system("clear");
 	#endif
+}
+
+void esperar_entrada(char *mensagem){
+	char buf[1];
+	
+	printf("\n%s", mensagem);
+	fgets(buf, 1, stdin);
+	limpa_stdin();
 }
