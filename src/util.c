@@ -15,7 +15,7 @@ void printar_tabela(Jogador *j, int num_jogadores, int num_rodadas, int *pontos_
 	printf("%-15s", "");
 	for (i = 0; i <= num_rodadas; i++)
 		printf("%-15s", categorias[i]);
-	printf("Total parcial\n"); 
+	printf("Total\n"); 
 	
 	for (i = 0; i < num_jogadores; i++){
 		printf("%-15s", j[i].nome);
