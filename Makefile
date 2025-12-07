@@ -3,7 +3,7 @@ VPATH = src include
 ALL:	main
 
 main:	main.o jogadores.o sorteios.o util.o respostas.o categorias.o tempo.o pontuacao.o
-	gcc main.o jogadores.o sorteios.o util.o respostas.o categorias.o tempo.o pontuacao.o -o main
+	gcc main.o jogadores.o sorteios.o util.o respostas.o categorias.o tempo.o pontuacao.o -o main -lm
 	
 main.o:	main.c jogadores.h sorteios.h util.h
 	gcc -Iinclude -c src/main.c
