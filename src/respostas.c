@@ -40,7 +40,7 @@ int ler_resposta_com_tempo(char *buffer_destino, double *tempo_levado, int max_s
 
 				// Validacao do tamanho máximo de 30
 				if (strlen(buffer_temp) > TAM_RESPOSTA) {
-					printf("Resposta muito longa! Máximo %d caracteres. Tente novamente: ",
+					printf("Resposta muito longa! Máximo %d caracteres. Tente novamente: \n",
 					   TAM_RESPOSTA);
 
 					gettimeofday(&atual, NULL);
@@ -59,7 +59,7 @@ int ler_resposta_com_tempo(char *buffer_destino, double *tempo_levado, int max_s
 
 				// Validacao da letra inicial
 				if (toupper(buffer_temp[0]) != toupper(letra_sorteada)) {
-					printf("A resposta deve começar com a letra '%c'. Tente novamente: ",
+					printf("A resposta deve começar com a letra '%c'. Tente novamente: \n",
 					   letra_sorteada);
 
 					gettimeofday(&atual, NULL);
