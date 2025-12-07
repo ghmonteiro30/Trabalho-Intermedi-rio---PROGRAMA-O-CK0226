@@ -10,7 +10,7 @@
 // utilizamos sys/select e sys/time para criar a entrada com limite de tempo
 
 // Faz a leitura com tempo limite usando select()
-int ler_resposta_com_tempo(char *buffer_destino, int max_segundos,
+int ler_resposta_com_tempo(char *buffer_destino, double *tempo_levado, int max_segundos,
                            char letra_sorteada, int eh_nome_pessoa)
 {
     struct timeval inicio, atual, prazo;
@@ -70,12 +70,14 @@ int ler_resposta_com_tempo(char *buffer_destino, int max_segundos,
 
                     continue;
                 }
-
+		
+		gettimeofday(&atual, NULL);
+		*tempo_levado = (double) (atual.tv_usec - inicio.tv_usec) / 1000000 + (double) (atual.tv_sec - inicio.tv_sec);
                 strcpy(buffer_destino, buffer_temp);
                 return 1; //retorna 1 ou seja sucesso
             }
         }
     }
-
+    	
     return 0; // retorna 0 indicando que acabou o tempo
 }

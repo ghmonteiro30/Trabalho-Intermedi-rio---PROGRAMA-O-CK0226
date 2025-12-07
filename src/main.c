@@ -56,12 +56,14 @@ int main (int narg, char *argv[]) {
 			segundos = 8 + (2 * n) - (2 * k);
 			printf("%s, voce deve entra um \"Nome de %s\" com letra \"%c\" em %d segundos:\n", j[idx].nome, categorias[i], letra, segundos);
 			
-			respostas[idx].valida = ler_resposta_com_tempo(respostas[idx].texto, segundos, letra, 1);
+			respostas[idx].valida = ler_resposta_com_tempo(respostas[idx].texto, &respostas[idx].tempo, segundos, letra, 1);
 
-			if(!respostas[idx].valida)
+			if(!respostas[idx].valida) {
 				strcpy(respostas[idx].texto,"(sem resposta)");
+				respostas[idx].tempo = segundos;
+			}
 	
-			limpa_tela();
+			//limpa_tela();
 		}
 	
 		// Exibe as jogadas realizadas por cada jogador
@@ -72,15 +74,17 @@ int main (int narg, char *argv[]) {
 			// Calculo da Pontuacao
 		calcular_pontuacao_rodada(respostas,n);
 
-		// Matriz para armazenar a pontuação de cada jogada
+		// Matriz para armazenar a pontuação de cada rodada
 		if (pontos_rodada == NULL)
 			pontos_rodada = (int*)malloc(sizeof(int) * n * rodadas);
 		for (k = 0; k < n; k++)
 			pontos_rodada[(i * n) + ordem[k]] = respostas[k].pontos;
 
-		//Acumula nos jogadores
-		for (k=0;k<n;k++)
+		//Acumula nos jogadores os pontos e tempo levado
+		for (k=0;k<n;k++) {
 			j[ordem[k]].pontos += respostas[k].pontos;
+			j[ordem[k]].tempo_total += respostas[k].tempo;
+		}
 
 		// Se ainda nao for a ultima rodada, exibe a tabela de escores parcial
 		if (i != rodadas - 1){
@@ -98,7 +102,7 @@ int main (int narg, char *argv[]) {
 	printf("\nRESULTADO FINAL:\n");
 	
 	printar_tabela(j, n, rodadas - 1, pontos_rodada, categorias);
-	
+
 	printf("\nO ganhador eh: \n");
 	
 	return EXIT_SUCCESS;
