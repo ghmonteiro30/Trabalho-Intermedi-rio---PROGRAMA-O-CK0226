@@ -7,9 +7,9 @@
 #include "util.h"
 
 int main (int narg, char *argv[]) {
-	int n, *ordem = NULL, i, k;
+	int n, *ordem = NULL, rodadas = 4, i, k, l;
 	Jogador *j;
-	char letra, categoria[15], buffer[100];
+	char letra, categorias[rodadas][15], buffer[100];
 	
 	printf("*** JOGO AMEDONHA ***\n");
 	
@@ -24,14 +24,14 @@ int main (int narg, char *argv[]) {
 	j = criarJogadores(n);
 	lerNomes(j, n);
 	
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < rodadas; i++) {
 		// Sorteio da letra da rodada
 		letra = sortear_letra();
 		printf("\nA letra desta rodada eh: %c\n", letra);
 		
 		// Sorteio da categoria da rodada
-		strcpy(categoria, obterNomeCategoria(sortearCategoria()));
-		printf("A categoria desta rodada eh: Nome de %s\n", categoria);
+		strcpy(categorias[i], obterNomeCategoria(sortearCategoria()));
+		printf("A categoria desta rodada eh: Nome de %s\n", categorias[i]);
 		
 		// Sorteio da ordem de jogada da rodada
 		printf("A ordem desta jogada sera: \n");
@@ -47,7 +47,7 @@ int main (int narg, char *argv[]) {
 		
 		// Recebe as respostas de cada jogador
 		for (k = 0; k < n; k++) {
-			printf("%s, voce deve entra um \"Nome de %s\" com letra \"%c\" em n segundos: ", j[ordem[k]].nome, categoria, letra);
+			printf("%s, voce deve entra um \"Nome de %s\" com letra \"%c\" em n segundos: ", j[ordem[k]].nome, categorias[i], letra);
 			fgets(buffer, 100, stdin);
 			limpa_tela();
 		}
@@ -55,13 +55,13 @@ int main (int narg, char *argv[]) {
 		// Exibe as jogadas realizadas por cada jogador
 		printf("Jogadas realizadas:\n");
 		for (k = 0; k < n; k++)
-			printf("%s:    %s\n", j[ordem[k]].nome, "resposta"); 
+			printf("%-15s %s\n", j[ordem[k]].nome, "resposta"); 
 		
 		// Se ainda nao for a ultima rodada, exibe a tabela de escores parcial
-		if (i != 3){
+		if (i != rodadas - 1){
 			printf("\nConcluida a rodada, esta eh a tabela de escores:\n");
 			
-			printf("--- aqui tabela de escores ---\n");
+			printar_tabela(j, n, i, categorias);
 			
 			esperar_entrada("Tecle [Enter] para iniciar a proxima rodada: ");
 		} else
@@ -72,7 +72,7 @@ int main (int narg, char *argv[]) {
 	
 	printf("\nRESULTADO FINAL:\n");
 	
-	printf("--- aqui resultado final ---");
+	printar_tabela(j, n, rodadas - 1, categorias);
 	
 	printf("O ganhador eh: \n");
 	
