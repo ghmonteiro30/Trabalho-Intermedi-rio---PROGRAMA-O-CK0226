@@ -14,7 +14,7 @@
    CONTRIBUIÇÕES DOS AUTORES:
 	- ANTONIO CARDOSO DO NASCIMENTO NETO: Colaboração na escrita do programa principal e implementação dos módulos sorteios.c/h e util.c/h
 
-	- FRANCISCO DAVID VAZ DE SOUSA: 
+	- FRANCISCO DAVID VAZ DE SOUSA: Colaboração no programa principal e implementação dos módulos categorias.c/h , pontuação.c/h e respostas.c/h
 
 	- GABRIEL HENRIQUE MONTEIRO DE MORAIS: Estruturação do projeto (src/include), Implementação dos módulos jogadores.c/h,
 	e testes no ambiente Linux (WSL).
