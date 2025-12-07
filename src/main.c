@@ -12,7 +12,7 @@
    Em caso de empate, o vencedor é definido pelo menor tempo acumulado de respostas.
 
    CONTRIBUIÇÕES DOS AUTORES:
-	- ANTONIO CARDOSO DO NASCIMENTO NETO: 
+	- ANTONIO CARDOSO DO NASCIMENTO NETO: Colaboração na escrita do programa principal e implementação dos módulos sorteios.c/ e util.c/h
 
 	- FRANCISCO DAVID VAZ DE SOUSA: 
 
