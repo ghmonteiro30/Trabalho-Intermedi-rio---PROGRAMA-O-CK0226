@@ -12,7 +12,7 @@ void limpa_stdin(){
 void printar_tabela(Jogador *j, int num_jogadores, int num_rodadas, int *pontos_rodada, char (*categorias)[15]){
 	int i, l;
 	
-	printf("%-15s", "");
+	printf("\n%-15s", "");
 	for (i = 0; i <= num_rodadas; i++)
 		printf("%-15s", categorias[i]);
 	printf("Total\n"); 
