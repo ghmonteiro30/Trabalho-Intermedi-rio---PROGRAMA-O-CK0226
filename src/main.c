@@ -1,3 +1,26 @@
+/* Trabalho Intermediário – Jogo Amedonha - Disciplina Programação (CK0226) 
+   Autores: ANTONIO CARDOSO DO NASCIMENTO NETO - 508199
+			FRANCISCO DAVID VAZ DE SOUSA - 554152
+			GABRIEL HENRIQUE MONTEIRO DE MORAIS - 548113
+
+   Data: Dezembro de 2025
+   Descrição: O jogo Amedonha começa solicitando o número de jogadores e seus respectivos nomes.
+   A cada rodada, uma categoria e uma letra são sorteadas, assim como a ordem de resposta, que
+   muda a cada nova rodada. Os jogadores devem então fornecer respostas que atendam à categoria
+   e iniciem com a letra sorteada, dentro do tempo disponível. Ao final de cada rodada, são atribuídas
+   pontuações conforme as respostas, e ao término do jogo, vence o jogador com a maior pontuação total.
+   Em caso de empate, o vencedor é definido pelo menor tempo acumulado de respostas.
+
+   CONTRIBUIÇÕES DOS AUTORES:
+	- ANTONIO CARDOSO DO NASCIMENTO NETO: 
+
+	- FRANCISCO DAVID VAZ DE SOUSA: 
+
+	- GABRIEL HENRIQUE MONTEIRO DE MORAIS: Estruturação do projeto (src/include), Implementação dos módulos jogadores.c/h,
+	e testes no ambiente Linux (WSL).
+*/
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
