@@ -9,7 +9,7 @@ void limpa_stdin(){
 	} while (c != '\n');
 }
 
-void printar_tabela(Jogador *j, int num_jogadores, int num_rodadas, char (*categorias)[15]){
+void printar_tabela(Jogador *j, int num_jogadores, int num_rodadas, int *pontos_rodada, char (*categorias)[15]){
 	int i, l;
 	
 	printf("%-15s", "");
@@ -20,8 +20,8 @@ void printar_tabela(Jogador *j, int num_jogadores, int num_rodadas, char (*categ
 	for (i = 0; i < num_jogadores; i++){
 		printf("%-15s", j[i].nome);
 		for (l = 0; l <= num_rodadas; l++)
-			printf("%-15d", 0);
-		printf("%d\n", 0);
+			printf("%-15d", pontos_rodada[(l * num_jogadores) + i]);
+		printf("%d\n", j[i].pontos);
 	}
 }
 

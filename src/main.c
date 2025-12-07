@@ -9,8 +9,9 @@
 #include "pontuacao.h"
 
 int main (int narg, char *argv[]) {
-	int n, *ordem = NULL, rodadas = 4, *pontos[rodadas], i, k;
+	int n, *ordem = NULL, rodadas = 4, segundos, *pontos_rodada = NULL, i, k, idx;
 	Jogador *j;
+	Resposta *respostas = NULL;
 	char letra, categorias[rodadas][15];
 	
 	printf("*** JOGO AMEDONHA ***\n");
@@ -48,12 +49,14 @@ int main (int narg, char *argv[]) {
 		limpa_tela();
 		
 		// Recebe as respostas de cada jogador
-		Resposta respostas[n];
+		if (respostas == NULL)
+			respostas = (Resposta*)malloc(sizeof(Resposta) * n);
 		for (k = 0; k < n; k++) {
-			int idx = ordem[k]; // jogador atual
-			printf("%s, voce deve entra um \"Nome de %s\" com letra \"%c\" em n segundos: ", j[idx].nome, categorias[i], letra);
+			idx = ordem[k]; // jogador atual
+			segundos = 8 + (2 * n) - (2 * k);
+			printf("%s, voce deve entra um \"Nome de %s\" com letra \"%c\" em %d segundos:\n", j[idx].nome, categorias[i], letra, segundos);
 			
-			respostas[idx].valida = ler_resposta_com_tempo(respostas[idx].texto, 15, letra, 1);
+			respostas[idx].valida = ler_resposta_com_tempo(respostas[idx].texto, segundos, letra, 1);
 
 			if(!respostas[idx].valida)
 				strcpy(respostas[idx].texto,"(sem resposta)");
@@ -69,15 +72,21 @@ int main (int narg, char *argv[]) {
 			// Calculo da Pontuacao
 		calcular_pontuacao_rodada(respostas,n);
 
+		// Matriz para armazenar a pontuação de cada jogada
+		if (pontos_rodada == NULL)
+			pontos_rodada = (int*)malloc(sizeof(int) * n * rodadas);
+		for (k = 0; k < n; k++)
+			pontos_rodada[(i * n) + ordem[k]] = respostas[k].pontos;
+
 		//Acumula nos jogadores
 		for (k=0;k<n;k++)
-			j[k].pontos += respostas[k].pontos;
+			j[ordem[k]].pontos += respostas[k].pontos;
 
 		// Se ainda nao for a ultima rodada, exibe a tabela de escores parcial
 		if (i != rodadas - 1){
 			printf("\nConcluida a rodada, esta eh a tabela de escores:\n");
 			
-			printar_tabela(j, n, i, categorias);
+			printar_tabela(j, n, i, pontos_rodada, categorias);
 			
 			esperar_entrada("Tecle [Enter] para iniciar a proxima rodada: ");
 		} else
@@ -88,9 +97,9 @@ int main (int narg, char *argv[]) {
 	
 	printf("\nRESULTADO FINAL:\n");
 	
-	printar_tabela(j, n, rodadas - 1, categorias);
+	printar_tabela(j, n, rodadas - 1, pontos_rodada, categorias);
 	
-	printf("O ganhador eh: \n");
+	printf("\nO ganhador eh: \n");
 	
 	return EXIT_SUCCESS;
 }
