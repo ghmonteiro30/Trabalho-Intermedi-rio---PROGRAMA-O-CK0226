@@ -72,3 +72,21 @@ void calcular_pontuacao_rodada(Resposta *respostas, int num_jogadores)
     free(normalizadas);
     free(repeticoes);
 }
+
+int idx_ganhador(Jogador *j, int n){
+	int i, ganhador;
+	
+	ganhador = 0;
+	for (i = 1; i < n; i++){
+		if (j[i].pontos >= j[ganhador].pontos) {
+			if (j[i].pontos == j[ganhador].pontos) {
+				if (j[i].tempo_total < j[ganhador].tempo_total)
+					ganhador = i;
+			} else
+				ganhador = i;
+		}
+	}
+	
+	return ganhador;
+}
+

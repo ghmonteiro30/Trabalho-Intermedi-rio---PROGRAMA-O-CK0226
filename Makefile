@@ -23,7 +23,7 @@ respostas.o:	respostas.c respostas.h
 tempo.o:	tempo.c tempo.h
 	gcc -Iinclude -c src/tempo.c
 
-pontuacao.o:	pontuacao.c pontuacao.h respostas.h
+pontuacao.o:	pontuacao.c pontuacao.h respostas.h jogadores.h
 	gcc -Iinclude -c src/pontuacao.c
 
 util.o:	util.c util.h

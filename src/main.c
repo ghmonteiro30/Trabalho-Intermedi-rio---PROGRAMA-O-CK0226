@@ -63,7 +63,7 @@ int main (int narg, char *argv[]) {
 				respostas[idx].tempo = segundos;
 			}
 	
-			//limpa_tela();
+			limpa_tela();
 		}
 	
 		// Exibe as jogadas realizadas por cada jogador
@@ -99,11 +99,11 @@ int main (int narg, char *argv[]) {
 		limpa_tela();
 	}
 	
-	printf("\nRESULTADO FINAL:\n");
 	
+	// Resultado final
+	printf("\nRESULTADO FINAL:\n");
 	printar_tabela(j, n, rodadas - 1, pontos_rodada, categorias);
-
-	printf("\nO ganhador eh: \n");
+	printf("\nO ganhador eh: %s\n", j[idx_ganhador(j, n)].nome);
 	
 	return EXIT_SUCCESS;
 }
