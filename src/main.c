@@ -7,7 +7,7 @@
 #include "util.h"
 
 int main (int narg, char *argv[]) {
-	int n, *ordem = NULL, rodadas = 4, i, k, l;
+	int n, *ordem = NULL, rodadas = 4, *pontos[rodadas], i, k;
 	Jogador *j;
 	char letra, categorias[rodadas][15], buffer[100];
 	
@@ -51,7 +51,7 @@ int main (int narg, char *argv[]) {
 			fgets(buffer, 100, stdin);
 			limpa_tela();
 		}
-		
+	
 		// Exibe as jogadas realizadas por cada jogador
 		printf("Jogadas realizadas:\n");
 		for (k = 0; k < n; k++)
