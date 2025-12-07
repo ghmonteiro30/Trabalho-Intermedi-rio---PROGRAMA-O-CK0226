@@ -1,5 +1,6 @@
 #include "sorteios.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
 char sortear_letra(){
@@ -24,6 +25,15 @@ void sortear_ordem(int *ordem, int n){
 		if (valido)
 			i++;
 	} while (i < n);
+}
+
+int ordem_valida(int *ordem, int *ordem_ant, int n) {
+	int i;
+	
+	for (i = 0; i < n; i++) 
+		if (ordem[i] != ordem_ant[i])
+			return 1;			// Se algum inteiro na mesma posição for diferente, a nova ordem é diferente da anterior
+	return 0;                                       // Se todos os inteiros forem iguais, a nova ordem é igual a anterior 					
 }
 
 void iniciar_semente(){

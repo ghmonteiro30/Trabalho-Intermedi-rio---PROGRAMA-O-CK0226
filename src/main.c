@@ -9,7 +9,7 @@
 #include "pontuacao.h"
 
 int main (int narg, char *argv[]) {
-	int n, *ordem = NULL, rodadas = 4, segundos, *pontos_rodada = NULL, i, k, idx;
+	int n, *ordem = NULL, *ordem_ant = NULL, rodadas = 4, segundos, *pontos_rodada = NULL, i, k, idx;
 	Jogador *j;
 	Resposta *respostas = NULL;
 	char letra, categorias[rodadas][15];
@@ -38,9 +38,17 @@ int main (int narg, char *argv[]) {
 		
 		// Sorteio da ordem de jogada da rodada
 		printf("A ordem desta jogada sera: \n");
-		if (ordem == NULL)
+		if (ordem == NULL) {
 			ordem = (int*)malloc(sizeof(int) * n);
-		sortear_ordem(ordem, n);
+			ordem_ant = (int*)malloc(sizeof(int) * n);
+			sortear_ordem(ordem, n);
+		} else {
+			for (k = 0; k < n; k++)
+				ordem_ant[k] = ordem[k];
+			do {
+				sortear_ordem(ordem, n);
+			} while (!ordem_valida(ordem, ordem_ant, n));
+		}
 		for (k = 0; k < n; k++) {
 			printf("  %d. %s\n", k + 1, j[ordem[k]].nome);
 		}
@@ -89,9 +97,7 @@ int main (int narg, char *argv[]) {
 		// Se ainda nao for a ultima rodada, exibe a tabela de escores parcial
 		if (i != rodadas - 1){
 			printf("\nConcluida a rodada, esta eh a tabela de escores:\n");
-			
 			printar_tabela(j, n, i, pontos_rodada, categorias);
-			
 			esperar_entrada("Tecle [Enter] para iniciar a proxima rodada: ");
 		} else
 			esperar_entrada("Tecle [Enter] para exibir o resultado final: ");
