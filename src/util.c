@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "util.h"
 
 void limpa_stdin(){
 	int c;
@@ -7,7 +8,22 @@ void limpa_stdin(){
 		c = getchar();
 	} while (c != '\n');
 }
-#include "util.h"
+
+void printar_tabela(Jogador *j, int num_jogadores, int num_rodadas, char (*categorias)[15]){
+	int i, l;
+	
+	printf("%-15s", "");
+	for (i = 0; i <= num_rodadas; i++)
+		printf("%-15s", categorias[i]);
+	printf("Total parcial\n"); 
+	
+	for (i = 0; i < num_jogadores; i++){
+		printf("%-15s", j[i].nome);
+		for (l = 0; l <= num_rodadas; l++)
+			printf("%-15d", 0);
+		printf("%d\n", 0);
+	}
+}
 
 void limpa_tela(){
 	#if defined(_WIN32) || defined(_WIN64)
